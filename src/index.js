@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-const titleStyle = {
-  backgroundColor: 'orange',
-  color: 'white',
-  fontFamily: 'Arial'
-};
+class Message extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Hello everyone</h1>
+      </div>
+    )
+  }
+}
 
 ReactDOM.render(
-  <div style={titleStyle}>
-    <h1 id="heading-element">Hello World!</h1>
-    <p>It is working! ;)</p>
-  </div>,
+  <Message />,
   document.getElementById('root')
 );
