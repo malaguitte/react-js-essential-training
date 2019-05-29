@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 const bookList = [
@@ -18,17 +18,25 @@ const bookList = [
     pages: 304
   }
 ];
-
-const Library = ({books}) => {
-  return (
-    <div>
-      <h1>Welcome to the Library!</h1>
-      {books.map(
-        (book, index) => <Book key={index} title={book.title} author={book.author} pages={book.pages} />
-      )}
-    </div>
-  )
-};
+class Library extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: true
+    }
+  }
+  render() {
+    const books = this.props.books;
+    return (
+      <div>
+        <h1>The library is {this.state.open ? 'open' : 'closed'}</h1>
+        {books.map(
+          (book, index) => <Book key={index} title={book.title} author={book.author} pages={book.pages} />
+        )}
+      </div>
+    )
+  }
+}
 
 const Book = ({title, author, pages}) => {
   return (
