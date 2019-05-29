@@ -5,13 +5,16 @@ class Message extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello everyone</h1>
+        <h1 style={{color: this.props.color}}>
+          {this.props.msg}
+        </h1>
+        <p>Let's check back in {this.props.minutes} minutes</p>
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <Message />,
+  <Message color="blue" msg="How is it going? :)" minutes={10} />,
   document.getElementById('root')
 );
