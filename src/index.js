@@ -19,7 +19,10 @@ const bookList = [
   }
 ];
 class Library extends React.Component {
-  state = { open: false };
+  state = { 
+    open: false,
+    freeBookmark: true
+  };
   
   toggleOpenClosed = () => {
     this.setState(prevState => ({
@@ -34,19 +37,27 @@ class Library extends React.Component {
         <h1>The library is {this.state.open ? 'open' : 'closed'}</h1>
         <button onClick={this.toggleOpenClosed}>Change</button>
         {books.map(
-          (book, index) => <Book key={index} title={book.title} author={book.author} pages={book.pages} />
+          (book, index) =>
+           <Book 
+            key={index} 
+            title={book.title} 
+            author={book.author} 
+            pages={book.pages} 
+            freeBookmark={this.state.freeBookmark} 
+          />
         )}
       </div>
     )
   }
 }
 
-const Book = ({title, author, pages}) => {
+const Book = ({title, author, pages, freeBookmark}) => {
   return (
     <section>
       <h2>{title}</h2>
       <p>By: {author}</p>
       <p>Pages: {pages} pages</p>
+      <p>Free Bookmark today: {freeBookmark ? 'Yes' : 'No'}</p>
     </section>
   )
 };
