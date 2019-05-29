@@ -1,13 +1,31 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-const Library = () => {
+const bookList = [
+  {
+    title: "The sun Also Rises",
+    author: "Ernest Hemingway",
+    pages: 260
+  },
+  {
+    title: "White Teeth",
+    author: "Zadie Smith",
+    pages: 480
+  },
+  {
+    title: "Cat's Cradle",
+    author: "Kurt Vonnegut",
+    pages: 304
+  }
+];
+
+const Library = ({books}) => {
   return (
     <div>
       <h1>Welcome to the Library!</h1>
-      <Book title="The sun Also Rises" author="Ernest Hemingway" pages={260}/>
-      <Book title="White Teeth" author="Zadie Smith" pages={480}/>
-      <Book title="Cat's Cradle" author="Kurt Vonnegut" pages={304}/>
+      {books.map(
+        (book, index) => <Book key={index} title={book.title} author={book.author} pages={book.pages} />
+      )}
     </div>
   )
 };
@@ -23,6 +41,6 @@ const Book = ({title, author, pages}) => {
 };
 
 ReactDOM.render(
-  <Library />,
+  <Library books={bookList} />,
   document.getElementById('root')
 );
