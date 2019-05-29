@@ -8,31 +8,27 @@ let skiData = {
   goal: 100
 };
 
-class SkiDataCounter extends Component {
+const getPercentage = (decimal) => (decimal * 100) + '%';
 
-  getPercentage = (decimal) => (decimal * 100) + '%';
+const calculateGoalProgress = (total, goal) => getPercentage(total / goal);
 
-  calculateGoalProgress = (total, goal) => this.getPercentage(total / goal);
-
-  render() {
-    const {total, powder, backCountry, goal} = this.props;
-    return (
-      <section>
-        <div>
-          <p>Total days: {total}</p>
-        </div>
-        <div>
-          <p>Powder days: {powder}</p>
-        </div>
-        <div>
-          <p>Backcountry days: {backCountry}</p>
-        </div>
-        <div>
-          <p>Goal Progress: {this.calculateGoalProgress(total, goal)}</p>
-        </div>
-      </section>
-    )
-  }
+const SkiDataCounter = ({total, powder, backCountry, goal}) => {
+  return (
+    <section>
+      <div>
+        <p>Total days: {total}</p>
+      </div>
+      <div>
+        <p>Powder days: {powder}</p>
+      </div>
+      <div>
+        <p>Backcountry days: {backCountry}</p>
+      </div>
+      <div>
+        <p>Goal Progress: {calculateGoalProgress(total, goal)}</p>
+      </div>
+    </section>
+  );
 }
 
 ReactDOM.render(
