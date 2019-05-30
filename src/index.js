@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 const bookList = [
   {
@@ -18,6 +19,9 @@ const bookList = [
     pages: 304
   }
 ];
+
+//fails due and a helpful warning is displayed on the console due to the PropTypes
+// const bookList = {};
 
 const Hiring = () => 
   <div>
@@ -134,6 +138,17 @@ const Book = ({title="No title provided", author="No author provided", pages=0, 
 //     )
 //   }
 // }
+
+Library.propTypes = {
+  books: PropTypes.array
+}
+
+Book.propTypes = {
+  title: PropTypes.string,
+  author: PropTypes.string,
+  pages: PropTypes.number,
+  freeBookmark: PropTypes.bool
+}
 
 ReactDOM.render(
   <Library  books={bookList}/>,
