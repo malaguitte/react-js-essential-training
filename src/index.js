@@ -37,6 +37,14 @@ class Library extends React.Component {
     hiring: true
   };
   
+  componentDidMount() {
+    console.log("The component is now mounted.");
+  }
+
+  componentDidUpdate() {
+    console.log("The component has been updated.");
+  }
+
   toggleOpenClosed = () => {
     this.setState(prevState => ({
       open: !prevState.open
